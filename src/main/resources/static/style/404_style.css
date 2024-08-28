@@ -1,0 +1,29 @@
+* {
+	margin: none;
+}
+
+body {
+	background-color: rgb(210, 210, 210);
+}
+
+.error_div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 17rem;
+}
+
+.nav_contacts:hover {
+	color: rgb(215, 215, 215);
+}
+
+.h1 {
+	margin-top: -5rem;
+	color: rgb(72, 71, 71);
+	font-size: 18rem;
+}
+
+.h2 {
+	font-size: 2.2rem;
+}

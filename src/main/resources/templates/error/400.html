@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact Management</title>
+    <link rel="stylesheet" th:href="@{/style/all_contact_style.css}" />
+    <link rel="stylesheet" th:href="@{/style/404_style.css}" />
+</head>
+<body>
+<nav class="nav">
+    <ul class="nav_ul">
+        <div class="nav_first">
+            <li class="nav_li nav_li_first">Contact Management</li>
+            <li class="nav_li">
+                <a class="add_contact" th:href="@{/user/contacts}"
+                >Contacts</a
+                >
+            </li>
+            <li class="nav_li">
+                <a class="add_contact" th:href="@{/user/create-contact}"
+                >Add Contact</a
+                >
+            </li>
+        </div>
+        <li class="nav_li">
+            <a class="add_contact" th:href="@{/logout}">Logout</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="error_div">
+    <h1 class="h1">400</h1>
+    <h2 class="h2">Bad Request</h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Contact Management</title>
+		<link rel="stylesheet" th:href="@{/style/all_contact_style.css}" />
+	</head>
+	<body>
+		<nav class="nav">
+			<ul class="nav_ul">
+				<div class="nav_first">
+					<li class="nav_li nav_li_first">Contact Management</li>
+					<li class="nav_li_2">
+						<a class="add_contact" th:href="@{/user/contacts}"
+							>Contacts</a
+						>
+					</li>
+					<li class="nav_li">
+						<a class="add_contact" th:href="@{/user/create-contact}"
+							>Add Contact</a
+						>
+					</li>
+				</div>
+				<li class="nav_li">
+					<a class="add_contact" th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="search_div">
+			<h1>Contacts</h1>
+			<form
+				class="search_form"
+				method="GET"
+				th:action="@{/user/search-contact}"
+			>
+				<input
+					class="search"
+					type="text"
+					name="name"
+					placeholder="Search......"
+				/>
+				<button class="search_btn" type="submit">
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M18.319 14.4326C20.7628 11.2941 20.542 6.75347 17.6569 3.86829C14.5327 0.744098 9.46734 0.744098 6.34315 3.86829C3.21895 6.99249 3.21895 12.0578 6.34315 15.182C9.22833 18.0672 13.769 18.2879 16.9075 15.8442C16.921 15.8595 16.9351 15.8745 16.9497 15.8891L21.1924 20.1317C21.5829 20.5223 22.2161 20.5223 22.6066 20.1317C22.9971 19.7412 22.9971 19.1081 22.6066 18.7175L18.364 14.4749C18.3493 14.4603 18.3343 14.4462 18.319 14.4326ZM16.2426 5.28251C18.5858 7.62565 18.5858 11.4246 16.2426 13.7678C13.8995 16.1109 10.1005 16.1109 7.75736 13.7678C5.41421 11.4246 5.41421 7.62565 7.75736 5.28251C10.1005 2.93936 13.8995 2.93936 16.2426 5.28251Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</button>
+			</form>
+		</div>
+
+		<table class="table">
+			<thead class="table_head" style="margin-bottom: 4rem">
+				<th class="th_1">#</th>
+				<th class="th_2">Name</th>
+				<th class="th_3">Number</th>
+				<th class="th_4">Role</th>
+				<th class="th_5">Created On</th>
+				<th class="th_6">Actions</th>
+			</thead>
+			<br />
+			<tbody>
+				<tr th:each="contact, i: ${contacts}">
+					<td th:text="${i.count}">1</td>
+					<td th:text="${contact.name}">Ramalingam</td>
+					<td th:text="${contact.number}">7550327914</td>
+					<td th:text="${contact.role}">My Self</td>
+					<td
+						th:text="${#temporals.format(contact.createdOn, 'dd MMM yyyy')}"
+					>
+						08 / 10 / 2023
+					</td>
+					<td>
+						<div class="actions">
+							<li class="action_1 action">
+								<a
+									th:href="@{/user/edit-contact/{contactId} (contactId = ${contact.id})}"
+									>Edit</a
+								>
+							</li>
+							<li class="action_2 action">
+								<a
+									th:href="@{/user/delete-contact/{contactId} (contactId = ${contact.id})}"
+									>Delete</a
+								>
+							</li>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br />
+	</body>
+</html>

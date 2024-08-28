@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Management</title>
+    <link rel="stylesheet" th:href="@{/style/all_contact_style.css}" />
+    <link rel="stylesheet" th:href="@{/style/create_contact_style.css}" />
+</head>
+<body>
+    <nav class="nav">
+        <ul class="nav_ul">
+            <div class="nav_first">
+                <li class="nav_li nav_li_first">Contact Management</li>
+                <li class="nav_li">
+                    <a th:href="@{/register}">Sign Up</a>
+                </li>
+            </div>
+        </ul>
+    </nav>
+
+    <div class="logout_div" th:if="${param.logout}">
+        <div class="logout">✅ You have been logged out</div>
+    </div>
+    <form class="create_form" method="post" role="form" th:action="@{/login}">
+        <h2>Sign In</h2>
+        <br />
+        <input
+                class="create_contact_input"
+                type="email"
+                name="username"
+                id="email"
+                placeholder="Enter Email Address *"
+        />
+        <br />
+        <input
+                class="create_contact_input"
+                placeholder="Enter Password *"
+                name="password"
+                id="password"
+                type="password"
+        />
+        <div th:if="${param.error}">
+            <div class="login_error">Invalid Email or Password</div>
+        </div>
+        <input class="create_contact_submit" type="submit" value="Login" />
+    </form>
+    <br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>

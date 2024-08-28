@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Contact Management</title>
+		<link rel="stylesheet" th:href="@{/style/all_contact_style.css}" />
+		<link rel="stylesheet" th:href="@{/style/create_contact_style.css}" />
+	</head>
+	<body>
+		<nav class="nav">
+			<ul class="nav_ul">
+				<div class="nav_first">
+					<li class="nav_li nav_li_first">Contact Management</li>
+					<li class="nav_li">
+						<a th:href="@{/login}">Sign In</a>
+					</li>
+				</div>
+			</ul>
+		</nav>
+		<form
+			class="create_form"
+			method="POST"
+			th:action="@{/user/register}"
+			th:object="${register}"
+		>
+			<h2>Sign Up</h2>
+			<br />
+			<input
+				class="create_contact_input"
+				type="text"
+				id="firstName"
+				name="firstName"
+				placeholder="Enter First Name *"
+				th:field="*{firstName}"
+			/>
+			<p
+				class="form_error"
+				th:if="${#fields.hasErrors('firstName')}"
+				th:errors="*{firstName}"
+			></p>
+			<br />
+
+			<input
+				class="create_contact_input"
+				type="text"
+				id="lastName"
+				name="lastName"
+				placeholder="Enter Last Name *"
+				th:field="*{lastName}"
+			/>
+			<p
+				class="form_error"
+				th:if="${#fields.hasErrors('lastName')}"
+				th:errors="*{lastName}"
+			></p>
+			<br />
+
+			<!--			<label for="number">Enter Mobile Number *</label>-->
+			<input
+				class="create_contact_input"
+				type="email"
+				id="email"
+				name="email"
+				placeholder="Enter Email Address *"
+				th:field="*{email}"
+			/>
+			<p
+				class="form_error"
+				th:if="${#fields.hasErrors('email')}"
+				th:errors="*{email}"
+			></p>
+
+			<br />
+			<!--			<label for="role">Enter Role *</label>-->
+			<input
+				class="create_contact_input"
+				type="password"
+				id="password"
+				name="password"
+				placeholder="Enter Password *"
+				th:field="*{password}"
+			/>
+			<p
+				class="form_error"
+				th:if="${#fields.hasErrors('password')}"
+				th:errors="*{password}"
+			></p>
+			<input class="create_contact_submit" type="submit" value="Create" />
+		</form>
+		<br /><br /><br /><br /><br /><br /><br /><br />
+	</body>
+</html>

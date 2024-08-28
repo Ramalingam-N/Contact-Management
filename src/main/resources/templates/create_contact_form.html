@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Contact Management</title>
+		<link rel="stylesheet" th:href="@{/style/all_contact_style.css}" />
+		<link rel="stylesheet" th:href="@{/style/create_contact_style.css}" />
+	</head>
+	<body>
+		<nav class="nav">
+			<ul class="nav_ul">
+				<div class="nav_first">
+					<li class="nav_li nav_li_first">Contact Management</li>
+					<li class="nav_li">
+						<a th:href="@{/user/contacts}">All Contacts</a>
+					</li>
+				</div>
+                <li class="nav_li">
+                    <a class="add_contact" th:href="@{/logout}">Logout</a>
+                </li>
+			</ul>
+		</nav>
+
+		<form
+			class="create_form"
+			method="POST"
+			th:action="@{/user/create-contact}"
+			th:object="${contact}"
+		>
+			<!--			<label for="name">Enter Name *</label>-->
+			<h2>Create Contact</h2>
+			<br />
+			<input
+				class="create_contact_input"
+				type="text"
+				id="name"
+				name="name"
+				placeholder="Enter Name *"
+				th:field="*{name}"
+			/>
+			<p
+				class="form_error"
+				th:if="${#fields.hasErrors('name')}"
+				th:errors="*{name}"
+			></p>
+			<br />
+
+			<!--			<label for="number">Enter Mobile Number *</label>-->
+			<input
+				class="create_contact_input"
+				type="text"
+				id="number"
+				name="number"
+				maxlength="10"
+				pattern="[0-9]{10}"
+				placeholder="Enter 10-digit Mobile number *"
+				th:field="*{number}"
+			/>
+			<p
+				class="form_error"
+				th:if="${#fields.hasErrors('number')}"
+				th:errors="*{number}"
+			></p>
+
+			<br />
+			<!--			<label for="role">Enter Role *</label>-->
+			<input
+				class="create_contact_input"
+				type="text"
+				id="role"
+				name="role"
+				placeholder="Enter Role "
+				th:field="*{role}"
+			/>
+			<input class="create_contact_submit" type="submit" value="Create" />
+		</form>
+	</body>
+</html>
