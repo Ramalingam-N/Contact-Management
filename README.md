@@ -24,11 +24,16 @@ Contact Management is a web application built using Spring Boot that allows user
   - Update the application.properties file located in src/main/resources with your database configuration.
   - Replace your username and password in the your-username and your-passoword(MYSQL).
   - Example configuration for MySQL:
-1. spring.datasource.url=jdbc:mysql://localhost:3306/contact_management
+1. spring.datasource.url=jdbc:mysql://localhost:3306/contact_management?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
 2. spring.datasource.username=your-username
 3. spring.datasource.password=your-password
-4. spring.jpa.hibernate.ddl-auto=update
-5. spring.jpa.show-sql=true
+4. spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+5. spring.jpa.hibernate.ddl-auto=update
+6. spring.jpa.properties.hibernate.show_sql=true
+7. spring.jpa.properties.hibernate.format_sql=true
+8. logging.level.org.springframework.security=DEBUG
+
+
 ### 3. Build the project:
 - mvn clean install
 ### 4.Run the application:
